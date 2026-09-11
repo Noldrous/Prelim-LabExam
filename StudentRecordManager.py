@@ -64,11 +64,6 @@ class DynamicArray:
                 return i
         return -1
 
-    def get(self, id):
-        index = self.search(id)
-        if index != -1:
-            return self._arr[index]
-
     def display_student(self, id):
         index = self.search(id)
         if index != -1:
@@ -150,7 +145,6 @@ class StudentManager:
         self.record.display_students()
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
             
-
     def search_student(self):
         stud_id = input("\n⌕ Enter Student ID to search: ")
         print("\n+++++++++++ STUDENT FOUND +++++++++++")
@@ -251,7 +245,7 @@ def main():
             case 6:
                 s_manager.display_array()
             case 7:
-                print("Closing Mangager...")
+                print("Closing Manager...")
                 running = False
 
 if __name__ == "__main__":
