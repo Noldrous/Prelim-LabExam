@@ -128,7 +128,7 @@ class StudentManager:
 
         if self.record.search(id) != -1:
             print("This Student ID already exists.")
-            user = int(input("Do you want to enter another ID? \n1. Yes \n2. NO \n- "))
+            user = int(input("Do you want to enter another ID? \n1. Yes \n2. NO \n-"))
             match user:
                 case 1:
                     self.add_student()
@@ -217,6 +217,7 @@ class StudentManager:
         self.record.display_array()
         print("")
 
+
 def start_menu():
         print("=" * 36)
         print("STUDENT RECORD MANAGER")
@@ -228,6 +229,7 @@ def start_menu():
         print("5. Remove Student")
         print("6. Display Array Information")
         print("7. Exit\n")
+
 
 def main():
     s_manager = StudentManager()
@@ -253,6 +255,7 @@ def main():
             case 7:
                 print("Closing Mangager...")
                 running = False
+
 
 if __name__ == "__main__":
     main()
