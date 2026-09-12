@@ -69,15 +69,14 @@ class SinglyLinkedList:
         if not node:
             print("No Music Available.")
             return  
-        while node.next is not None:
+        while node is not None:
             print(">" * 36)
             node.display()
             node = node.next
         print(">" * 36)
 
-
     def display_size(self):
-        print(f"Size: {self._size}")
+        print(f"Total Number of Songs: {self._size}")
         node = self._head
         if not node:
             print("It seems to be pretty empty here...")
@@ -131,7 +130,7 @@ class PlaylistManager:
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def display_playlist(self):
-        print("\n<<<<<<<<<< MUSIC PLAYLIST >>>>>>>>>>")
+        print("\n========== MUSIC PLAYLIST ==========\n")
         self.playlist.display_playlist()
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
@@ -142,7 +141,7 @@ class PlaylistManager:
         pass
 
     def display_size(self):
-        print("\n======= TOTAL NUMBER OF MUSIC =======")
+        print("\n====== TOTAL NUMBER OF MUSIC ======")
         self.playlist.display_size()
         print("")
 
@@ -188,4 +187,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
