@@ -12,7 +12,7 @@ class Student:
         print(f"Year Level: {self._year_level}")
 
     def display_name(self):
-        print(f"[{self._student_name}]", end=" ") 
+        print(f"[{self._student_name}]", end=" ")
 
     def update_id(self, id):
         self._student_id = id
