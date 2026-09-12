@@ -64,30 +64,43 @@ class DynamicArray:
                 return i
         return -1
 
-    def display_student(self, id):
+    def display_searched_student(self, id):
         index = self.search(id)
         if index != -1:
             self._arr[index].display()
+            print("\n+++++++++++ STUDENT FOUND +++++++++++")
 
     def update_id(self, id, stud_id):
         index = self.search(id)
         if index != -1:
             self._arr[index].update_id(stud_id)
+            print("Student ID Updated.")
+        else:
+            print("Student ID not found.")
 
     def update_name(self, id, name):
         index = self.search(id)
         if index != -1:
             self._arr[index].update_name(name)
+            print("Student Name Updated.")
+        else:
+            print("Student ID not found.")
 
     def update_course(self, id, course):
         index = self.search(id)
         if index != -1:
             self._arr[index].update_course(course)
+            print("Course Updated.")
+        else:
+            print("Student ID not found.")
 
     def update_year(self, id, year):
         index = self.search(id)
         if index != -1:
             self._arr[index].update_year(year)
+            print("Year Level Updated.")
+        else:
+            print("Student ID not found.")
 
     def update_all(self, id, stud_id, name, course, year):
         index = self.search(id)
@@ -96,6 +109,9 @@ class DynamicArray:
             self._arr[index].update_name(name)
             self._arr[index].update_course(course)
             self._arr[index].update_year(year)
+            print("Information Updated.")
+        else:
+            print("Student ID not found.")
 
     def remove(self, id):
         index = self.search(id)
@@ -103,7 +119,10 @@ class DynamicArray:
             for i in range(index, self._size - 1):
                 self._arr[i] = self._arr[i + 1]
             self._arr[self._size - 1] = None
+            print("\nStudent Removed.")
             self._size -= 1
+        else:
+            print("Student ID not found.")
 
     def display_array(self):
         print(f"Capacity: {self._capacity}")
@@ -148,8 +167,7 @@ class StudentManager:
     def search_student(self):
         print("\n======== SEARCHING STUDENT ========")
         stud_id = input("⌕ Enter Student ID to search: ")
-        print("\n+++++++++++ STUDENT FOUND +++++++++++")
-        self.record.display_student(stud_id)
+        self.record.display_searched_student(stud_id)
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def update_student(self):
@@ -168,22 +186,18 @@ class StudentManager:
             case 1:
                 stud_id = input("Enter NEW Student ID: ")
                 self.record.update_id(id, stud_id)
-                print("ID updated.")
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
             case 2:
                 name = input("Enter NEW Student Name: ")
                 self.record.update_name(id, name)
-                print("Student Name Updated.")
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
             case 3:
                 course = input("Enter NEW Course: ")
                 self.record.update_course(id, course)
-                print("Course Updated.")
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
             case 4:
                 year = int(input("Enter NEW Year Level: "))
                 self.record.update_year(id, year)
-                print("Year Level Updated.")
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
             case 5:
                 stud_id = input("Enter NEW Student ID: ")
@@ -191,7 +205,9 @@ class StudentManager:
                 course = input("Enter NEW Course: ")
                 year = int(input("Enter NEW Year Level: "))
                 self.record.update_all(id, stud_id, name, course, year)
-                print("Information Updated.")
+                cont = input("\nPRESS ENTER TO CONTINUE...\n")
+            case _:
+                print("Your input is invalid.")
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def remove_student(self):
@@ -202,12 +218,14 @@ class StudentManager:
         match user:
             case 1:
                 self.record.remove(id)
-                print("\nStudent Removed.")
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
             case 2:
                 print("Operation Cancelled.\n")
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
                 return
+            case _:
+                print("Your input is invalid.")
+                cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def display_array(self):
         print("\n----- Array Information -----")

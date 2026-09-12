@@ -47,6 +47,7 @@ class SinglyLinkedList:
         new_node.next = self._head
         self._head = new_node
         self._size += 1
+        print("\nSong Added.")
 
     def insert_last(self, value):
         node = self._head
@@ -59,27 +60,29 @@ class SinglyLinkedList:
                 node = node.next
             node.next = new_node
         self._size += 1
+        print("\nSong Added.")
 
     def insert_at(self, pos, value):
-        if 0 <= pos <= self._size:
-            if pos < 0:
-                print("Cannot Accept Negative Value.")
+        if pos <= 0 or pos > self._size + 1:
+            print("\n! ! ! ! POSITION OUT OF BOUNDS ! ! ! !")
+            return False
 
-            if pos == 1:
-                return self.insert_first(value)
+        if pos == 1:
+            return self.insert_first(value)
+            return True
 
-            node = self._head
-            new_node = Node(value)
-            count = 1
+        node = self._head
+        new_node = Node(value)
+        count = 1
 
-            while node is not None and count < pos - 1:
-                node = node.next
-                count += 1
+        while node is not None and count < pos - 1:
+            node = node.next
+            count += 1
 
-            new_node.next = node.next
-            node.next = new_node
-        else:
-            print("Position out of bounds.")
+        new_node.next = node.next
+        node.next = new_node
+        self._size += 1
+        print("\nSong Added.")
 
     def display_playlist(self):
         node = self._head
@@ -144,8 +147,8 @@ class PlaylistManager:
         duration = input("Enter Duration: ")
 
         new_song = Song(id, title, artist, duration)
-
         self.playlist.insert_first(new_song)
+
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def add_end(self):
@@ -156,8 +159,8 @@ class PlaylistManager:
         duration = input("Enter Duration: ")
 
         new_song = Song(id, title, artist, duration)
-
         self.playlist.insert_last(new_song)
+
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def insert_at(self):
@@ -169,8 +172,8 @@ class PlaylistManager:
         duration = input("Enter Duration: ")
 
         new_song = Song(id, title, artist, duration)
-
         self.playlist.insert_at(pos, new_song)
+
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def display_playlist(self):
@@ -201,9 +204,11 @@ class PlaylistManager:
             case 2:
                 print("Operation Cancelled.\n")
                 cont = input("PRESS ENTER TO CONTINUE...\n")
-                return
-        
-
+                return 
+            case _:
+                print("\nYour input is invalid.\n")
+                cont = input("PRESS ENTER TO CONTINUE...\n")
+            
     def display_size(self):
         print("\n====== TOTAL NUMBER OF MUSIC ======")
         self.playlist.display_size()
@@ -249,6 +254,9 @@ def main():
             case 8:
                 print("Closing Manager...")
                 running = False
+            case _:
+                print("Your input is invalid.")
+                cont = input("PRESS ENTER TO CONTINUE...\n")
 
 if __name__ == "__main__":
     main()
