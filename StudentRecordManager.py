@@ -35,20 +35,20 @@ class DynamicArray:
         self._size = 0
         self._arr = [None] * self._capacity
 
-    def _new_array(self, n):        #helper method for _resize
+    def _new_array(self, n):
         return [None] * n
         
     def _resize(self, new_capacity):
-        b_arr = self._new_array(new_capacity)   #make new array based on new capacity
-        for i in range(self._size):             #copy
+        b_arr = self._new_array(new_capacity)
+        for i in range(self._size):
             b_arr[i] = self._arr[i]
-        self._arr = b_arr                       #use the new resized array and update capacity
+        self._arr = b_arr
         self._capacity = new_capacity
 
-    def add(self, item):          #equivalent to .append()
-        if self._size == self._capacity:                    #checks if there size is reaching capacity
+    def add(self, item):
+        if self._size == self._capacity:
             self._resize(self._capacity * 2)
-        self._arr[self._size] = item                        #add new item to the end of the array
+        self._arr[self._size] = item
         self._size += 1
 
     def display_students(self):
@@ -146,13 +146,15 @@ class StudentManager:
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
             
     def search_student(self):
-        stud_id = input("\n⌕ Enter Student ID to search: ")
+        print("\n======== SEARCHING STUDENT ========")
+        stud_id = input("⌕ Enter Student ID to search: ")
         print("\n+++++++++++ STUDENT FOUND +++++++++++")
         self.record.display_student(stud_id)
         cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def update_student(self):
-        id = input("\n⌕ Enter Student ID to update its info: ")
+        print("\n======== UPDATING STUDENT ========")
+        id = input("⌕ Enter Student ID to update its info: ")
         print("\n+++++++++++ STUDENT FOUND +++++++++++")
         print("\n/// What do you want to update? \\\\\\")
         print("1. Student ID")
@@ -193,13 +195,14 @@ class StudentManager:
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
 
     def remove_student(self):
+        print("\n======== SEARCHING STUDENT ========")
         id = input("\n⌕ Enter Student ID to remove: ")
         user = int(input("Are you sure? \n1. Yes \n2. No \n- "))
         
         match user:
             case 1:
                 self.record.remove(id)
-                print("\nStudent Removed.\n")
+                print("\nStudent Removed.")
                 cont = input("\nPRESS ENTER TO CONTINUE...\n")
             case 2:
                 print("Operation Cancelled.\n")
